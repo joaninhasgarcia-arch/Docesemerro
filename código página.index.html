@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doce Sem Erro - Brigadeiros Gourmet</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FDF8F3',
+            'cream-dark': '#F5EDE4',
+            chocolate: '#5D4037',
+            'chocolate-light': '#8D6E63',
+            terracotta: '#C4805A',
+            'terracotta-light': '#D4A484',
+            'green-cta': '#2E7D32',
+            'green-cta-hover': '#1B5E20',
+          },
+          fontFamily: {
+            'heading': ['Nunito', 'sans-serif'],
+            'body': ['DM Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body { height: 100%; }
+    .testimonial-card {
+      background: linear-gradient(135deg, #DCF8C6 0%, #C5E8B7 100%);
+    }
+    .testimonial-tail {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #C5E8B7;
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+    }
+    .plan-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .plan-card:hover {
+      transform: translateY(-4px);
+    }
+    .featured-plan {
+      border: 3px solid #C4805A;
+      position: relative;
+    }
+    .badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+    .faq-item {
+      border-bottom: 1px solid #E8DDD4;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq-answer.open {
+      max-height: 500px;
+    }
+    .carousel-container {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+    .carousel-item {
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+    @keyframes pulse-soft {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+    .urgency-bar {
+      animation: pulse-soft 2s ease-in-out infinite;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+
+ <body class="h-full bg-cream font-body text-chocolate overflow-auto">
+  <div class="w-full min-h-full">
+
+   <!-- Urgency Bar -->
+   <div id="urgency-bar" class="urgency-bar bg-gradient-to-r from-terracotta to-chocolate-light text-white py-3 px-4 text-center sticky top-0 z-50 shadow-md">
+    <p class="text-sm font-semibold font-heading">⏰ Oferta promocional expira em: <span id="countdown" class="font-bold text-lg ml-1">05:00</span></p>
+   </div>
+
+   <!-- Hero Section -->
+   <section class="px-5 pt-8 pb-6">
+    <div class="text-center mb-6">
+     <div class="inline-flex items-center gap-2 bg-terracotta-light/20 px-4 py-2 rounded-full mb-4">
+      <span class="text-2xl">🍫</span>
+      <span class="font-heading font-bold text-chocolate text-lg">Doce Sem Erro</span>
+     </div>
+
+     <h1 id="headline" class="font-heading font-black text-2xl md:text-3xl lg:text-4xl text-chocolate leading-tight mb-4">
+      Aprenda a fazer brigadeiros perfeitos para vender ou para impressionar em casa
+     </h1>
+     <p id="subheadline" class="font-body text-chocolate-light text-base md:text-lg leading-relaxed">
+      Receitas testadas + passo a passo direto ao ponto
+     </p>
+    </div>
+
+    <!-- Hero Image (trocada por docinhos/brigadeiro) -->
+    <div class="relative rounded-2xl overflow-hidden shadow-xl mb-8">
+     <img
+      src="https://unsplash.com/photos/0anjdZhIaUU/download?force=true"
+      alt="Brigadeiros gourmet em forminhas elegantes"
+      class="w-full h-48 md:h-64 object-cover"
+      loading="lazy"
+      onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #8D6E63 0%, #5D4037 100%)'; this.alt='Brigadeiros Gourmet';"
+     >
+     <div class="absolute inset-0 bg-gradient-to-t from-chocolate/40 to-transparent"></div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="bg-white rounded-2xl p-5 shadow-lg mb-8">
+     <h3 class="font-heading font-bold text-lg text-chocolate mb-4 text-center">O que você vai receber:</h3>
+     <ul class="space-y-3">
+      <li class="flex items-start gap-3">
+       <span class="flex-shrink-0 w-6 h-6 bg-green-cta rounded-full flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+        </svg>
+       </span>
+       <span class="text-chocolate"><strong class="font-heading">10 receitas</strong> de Brigadeiro Alcoólico</span>
+      </li>
+
+      <li class="flex items-start gap-3">
+       <span class="flex-shrink-0 w-6 h-6 bg-green-cta rounded-full flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+        </svg>
+       </span>
+       <span class="text-chocolate"><strong class="font-heading">50 receitas</strong> de Brigadeiro Gourmet</span>
+      </li>
+
+      <li class="flex items-start gap-3">
+       <span class="flex-shrink-0 w-6 h-6 bg-green-cta rounded-full flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+        </svg>
+       </span>
+       <span class="text-chocolate">Aprenda o <strong class="font-heading">ponto perfeito</strong> (textura, fogo e tempo)</span>
+      </li>
+
+      <li class="flex items-start gap-3">
+       <span class="flex-shrink-0 w-6 h-6 bg-green-cta rounded-full flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+        </svg>
+       </span>
+       <span class="text-chocolate">Receba por <strong class="font-heading">e-mail</strong> e acesse na hora (digital)</span>
+      </li>
+     </ul>
+    </div>
+   </section>
+
+   <!-- Pricing Section -->
+   <section class="px-5 pb-10">
+    <h2 class="font-heading font-black text-xl text-center text-chocolate mb-6">Escolha seu plano:</h2>
+
+    <!-- Basic Plan -->
+    <div class="plan-card bg-white rounded-2xl p-6 shadow-lg mb-6">
+     <div class="text-center mb-4">
+      <h3 class="font-heading font-bold text-lg text-chocolate">Plano Básico</h3>
+      <div class="mt-2">
+       <span id="basic-price-display" class="font-heading font-black text-3xl text-terracotta">R$ 4,99</span>
+      </div>
+     </div>
+
+     <ul class="space-y-2 mb-6 text-sm">
+      <li class="flex items-center gap-2"><span class="text-green-cta">✓</span> <span>10 receitas de brigadeiro alcoólico</span></li>
+      <li class="flex items-center gap-2"><span class="text-green-cta">✓</span> <span>50 receitas de brigadeiro gourmet</span></li>
+      <li class="flex items-center gap-2"><span class="text-green-cta">✓</span> <span>Guia do ponto perfeito</span></li>
+      <li class="flex items-center gap-2"><span class="text-green-cta">✓</span> <span>Entrega imediata por e-mail</span></li>
+     </ul>
+
+     <!-- BOTÃO TOPO (4,99) - corrigido -->
+     <a
+      href="https://pay.cakto.com.br/3di22zr_752116"
+      target="_blank"
+      rel="noopener"
+      class="block w-full bg-green-cta hover:bg-green-cta-hover text-white font-heading font-bold text-center py-4 rounded-xl transition-colors shadow-md"
+     >
+      Quero por R$ 4,99
+     </a>
+    </div>
+
+    <!-- Complete Plan (Featured) -->
+    <div class="plan-card featured-plan bg-white rounded-2xl p-6 shadow-xl mt-8">
+     <span class="badge bg-terracotta text-white font-heading font-bold text-xs px-4 py-2 rounded-full shadow-lg"> ⭐ MAIS VANTAJOSO </span>
+
+     <div class="text-center mb-4 pt-2">
+      <h3 class="font-heading font-bold text-lg text-chocolate">Plano Completo</h3>
+      <div class="mt-2">
+       <span id="complete-price-display" class="font-heading font-black text-3xl text-terracotta">R$ 14,99</span>
+      </div>
+     </div>
+
+     <ul class="space-y-2 mb-6 text-sm">
+      <li class="flex items-center gap-2"><span class="text-green-cta">✓</span> <span><strong>Tudo do Plano Básico +</strong></span></li>
+      <li class="flex items-center gap-2"><span class="text-green-cta">✓</span> <span>Pipoca Gourmet</span></li>
+      <li class="flex items-center gap-2"><span class="text-green-cta">✓</span> <span>Geladinho Gourmet</span></li>
+      <li class="flex items-center gap-2"><span class="text-green-cta">✓</span> <span>Tortas Doces e Salgadas</span></li>
+      <li class="flex items-center gap-2"><span class="text-green-cta">✓</span> <span>Bolo no Pote</span></li>
+      <li class="flex items-center gap-2"><span class="text-green-cta">✓</span> <span>Brigadeiro Fit e Doces Fit</span></li>
+      <li class="flex items-center gap-2"><span class="text-green-cta">✓</span> <span>Brigadeiros e Doces Finos (premium)</span></li>
+      <li class="flex items-center gap-2"><span class="text-green-cta">✓</span> <span>Videoaulas curtas de sobremesas</span></li>
+     </ul>
+
+     <!-- BOTÃO TOPO (14,99) - corrigido -->
+     <a
+      href="https://pay.cakto.com.br/36dcsbs_776997"
+      target="_blank"
+      rel="noopener"
+      class="block w-full bg-green-cta hover:bg-green-cta-hover text-white font-heading font-bold text-center py-4 rounded-xl transition-colors shadow-md"
+     >
+      Quero o Plano Completo por R$ 14,99
+     </a>
+    </div>
+   </section>
+
+   <!-- Second Image (trocada por brigadeiro) -->
+   <section class="px-5 pb-10">
+    <div class="rounded-2xl overflow-hidden shadow-xl">
+     <img
+      src="https://unsplash.com/photos/AirX9FDrOTk/download?force=true"
+      alt="Brigadeiros em forminhas com granulado"
+      class="w-full h-40 md:h-52 object-cover"
+      loading="lazy"
+      onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #C4805A 0%, #8D6E63 100%)'; this.alt='Brigadeiros Variados';"
+     >
+    </div>
+   </section>
+
+   <!-- Para Quem É -->
+   <section class="px-5 pb-10 bg-cream-dark py-10">
+    <h2 class="font-heading font-black text-xl text-center text-chocolate mb-6">Para quem é esse material?</h2>
+    <div class="grid grid-cols-2 gap-4">
+     <div class="bg-white rounded-xl p-4 shadow-md text-center">
+      <div class="text-3xl mb-2">🏠</div>
+      <h4 class="font-heading font-bold text-sm text-chocolate">Fazer em casa e impressionar</h4>
+      <p class="text-xs text-chocolate-light mt-1">Surpreenda família e amigos</p>
+     </div>
+     <div class="bg-white rounded-xl p-4 shadow-md text-center">
+      <div class="text-3xl mb-2">🎁</div>
+      <h4 class="font-heading font-bold text-sm text-chocolate">Presentear e ocasiões especiais</h4>
+      <p class="text-xs text-chocolate-light mt-1">Presentes únicos e feitos com amor</p>
+     </div>
+     <div class="bg-white rounded-xl p-4 shadow-md text-center">
+      <div class="text-3xl mb-2">💰</div>
+      <h4 class="font-heading font-bold text-sm text-chocolate">Vender e aumentar renda</h4>
+      <p class="text-xs text-chocolate-light mt-1">Comece seu negócio de doces</p>
+     </div>
+     <div class="bg-white rounded-xl p-4 shadow-md text-center">
+      <div class="text-3xl mb-2">✨</div>
+      <h4 class="font-heading font-bold text-sm text-chocolate">Acertar o ponto sem desperdício</h4>
+      <p class="text-xs text-chocolate-light mt-1">Economia e resultado garantido</p>
+     </div>
+    </div>
+   </section>
+
+   <!-- Testimonials -->
+   <section class="py-10 px-5">
+    <h2 class="font-heading font-black text-xl text-center text-chocolate mb-6">O que estão dizendo:</h2>
+    <div class="carousel-container flex gap-4 pb-4 -mx-5 px-5">
+     <div class="carousel-item w-72">
+      <div class="testimonial-card rounded-2xl p-4 shadow-md relative">
+       <p class="text-sm text-gray-800">"Fiz os brigadeiros alcoólicos na festa de ano novo e foi SUCESSO! Todo mundo pediu a receita 😍"</p>
+       <p class="text-xs text-gray-600 mt-2 font-semibold">— Ana Paula, SP</p>
+       <div class="testimonial-tail"></div>
+      </div>
+     </div>
+     <div class="carousel-item w-72">
+      <div class="testimonial-card rounded-2xl p-4 shadow-md relative">
+       <p class="text-sm text-gray-800">"Comecei a vender brigadeiro gourmet no trabalho. Já recuperei o investimento no primeiro dia! 💪"</p>
+       <p class="text-xs text-gray-600 mt-2 font-semibold">— Carlos, RJ</p>
+       <div class="testimonial-tail"></div>
+      </div>
+     </div>
+     <div class="carousel-item w-72">
+      <div class="testimonial-card rounded-2xl p-4 shadow-md relative">
+       <p class="text-sm text-gray-800">"O guia do ponto perfeito salvou minha vida! Nunca mais errei a textura 🙏"</p>
+       <p class="text-xs text-gray-600 mt-2 font-semibold">— Mariana, MG</p>
+       <div class="testimonial-tail"></div>
+      </div>
+     </div>
+     <div class="carousel-item w-72">
+      <div class="testimonial-card rounded-2xl p-4 shadow-md relative">
+       <p class="text-sm text-gray-800">"Achei que por esse preço não seria tão completo. Me enganei! Vale muito mais 🍫"</p>
+       <p class="text-xs text-gray-600 mt-2 font-semibold">— Fernanda, PR</p>
+       <div class="testimonial-tail"></div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- How You Receive -->
+   <section class="px-5 pb-10 bg-cream-dark py-10">
+    <h2 class="font-heading font-black text-xl text-center text-chocolate mb-6">Como você recebe:</h2>
+    <div class="space-y-4">
+     <div class="flex items-center gap-4 bg-white rounded-xl p-4 shadow-md">
+      <div class="w-10 h-10 bg-terracotta rounded-full flex items-center justify-center text-white font-heading font-bold flex-shrink-0">1</div>
+      <div>
+       <h4 class="font-heading font-bold text-sm text-chocolate">Escolha seu plano</h4>
+       <p class="text-xs text-chocolate-light">Básico ou Completo</p>
+      </div>
+     </div>
+     <div class="flex items-center gap-4 bg-white rounded-xl p-4 shadow-md">
+      <div class="w-10 h-10 bg-terracotta rounded-full flex items-center justify-center text-white font-heading font-bold flex-shrink-0">2</div>
+      <div>
+       <h4 class="font-heading font-bold text-sm text-chocolate">Pague online</h4>
+       <p class="text-xs text-chocolate-light">Pix, cartão ou boleto</p>
+      </div>
+     </div>
+     <div class="flex items-center gap-4 bg-white rounded-xl p-4 shadow-md">
+      <div class="w-10 h-10 bg-terracotta rounded-full flex items-center justify-center text-white font-heading font-bold flex-shrink-0">3</div>
+      <div>
+       <h4 class="font-heading font-bold text-sm text-chocolate">Receba no e-mail</h4>
+       <p class="text-xs text-chocolate-light">Instantaneamente após a compra</p>
+      </div>
+     </div>
+     <div class="flex items-center gap-4 bg-white rounded-xl p-4 shadow-md">
+      <div class="w-10 h-10 bg-green-cta rounded-full flex items-center justify-center text-white font-heading font-bold flex-shrink-0">✓</div>
+      <div>
+       <h4 class="font-heading font-bold text-sm text-chocolate">Acesse imediatamente</h4>
+       <p class="text-xs text-chocolate-light">Comece a fazer seus brigadeiros</p>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Third Image (trocada por brigadeiro) -->
+   <section class="px-5 pb-10">
+    <div class="rounded-2xl overflow-hidden shadow-xl">
+     <img
+      src="https://images.unsplash.com/photo-1572299820091-370797da9746?auto=format&fit=crop&w=1200&q=80"
+      alt="Brigadeiros em copinhos"
+      class="w-full h-40 md:h-52 object-cover"
+      loading="lazy"
+      onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #5D4037 0%, #8D6E63 100%)'; this.alt='Brigadeiros Premium';"
+     >
+    </div>
+   </section>
+
+   <!-- FAQ -->
+   <section class="px-5 pb-10">
+    <h2 class="font-heading font-black text-xl text-center text-chocolate mb-6">Perguntas Frequentes</h2>
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+     <div class="faq-item">
+      <button class="faq-question w-full text-left p-4 flex justify-between items-center" onclick="toggleFaq(this)">
+       <span class="font-heading font-bold text-sm text-chocolate pr-4">Sou iniciante, consigo fazer?</span>
+       <span class="faq-icon text-terracotta text-xl flex-shrink-0">+</span>
+      </button>
+      <div class="faq-answer px-4 pb-4">
+       <p class="text-sm text-chocolate-light">Sim! As receitas foram criadas pensando em quem nunca fez brigadeiro. O passo a passo é simples e direto, com dicas de ponto e tempo certinhos.</p>
+      </div>
+     </div>
+
+     <div class="faq-item">
+      <button class="faq-question w-full text-left p-4 flex justify-between items-center" onclick="toggleFaq(this)">
+       <span class="font-heading font-bold text-sm text-chocolate pr-4">Consigo acessar no celular?</span>
+       <span class="faq-icon text-terracotta text-xl flex-shrink-0">+</span>
+      </button>
+      <div class="faq-answer px-4 pb-4">
+       <p class="text-sm text-chocolate-light">Com certeza! O material é 100% digital e funciona perfeitamente no celular, tablet ou computador. Acesse de qualquer lugar.</p>
+      </div>
+     </div>
+
+     <div class="faq-item">
+      <button class="faq-question w-full text-left p-4 flex justify-between items-center" onclick="toggleFaq(this)">
+       <span class="font-heading font-bold text-sm text-chocolate pr-4">Como recebo o material?</span>
+       <span class="faq-icon text-terracotta text-xl flex-shrink-0">+</span>
+      </button>
+      <div class="faq-answer px-4 pb-4">
+       <p class="text-sm text-chocolate-light">Imediatamente após a confirmação do pagamento, você recebe tudo por e-mail. Se pagar por Pix, o acesso é instantâneo!</p>
+      </div>
+     </div>
+
+     <div class="faq-item">
+      <button class="faq-question w-full text-left p-4 flex justify-between items-center" onclick="toggleFaq(this)">
+       <span class="font-heading font-bold text-sm text-chocolate pr-4">Os ingredientes são fáceis de encontrar?</span>
+       <span class="faq-icon text-terracotta text-xl flex-shrink-0">+</span>
+      </button>
+      <div class="faq-answer px-4 pb-4">
+       <p class="text-sm text-chocolate-light">Sim! Usamos ingredientes que você encontra em qualquer supermercado ou loja de confeitaria. Nada complicado ou caro demais.</p>
+      </div>
+     </div>
+
+     <div class="faq-item">
+      <button class="faq-question w-full text-left p-4 flex justify-between items-center" onclick="toggleFaq(this)">
+       <span class="font-heading font-bold text-sm text-chocolate pr-4">Tenho suporte se tiver dúvidas?</span>
+       <span class="faq-icon text-terracotta text-xl flex-shrink-0">+</span>
+      </button>
+      <div class="faq-answer px-4 pb-4">
+       <p class="text-sm text-chocolate-light">Sim! Você pode entrar em contato por e-mail ou WhatsApp caso tenha qualquer dúvida sobre as receitas ou o acesso ao material.</p>
+      </div>
+     </div>
+
+     <div class="faq-item border-b-0">
+      <button class="faq-question w-full text-left p-4 flex justify-between items-center" onclick="toggleFaq(this)">
+       <span class="font-heading font-bold text-sm text-chocolate pr-4">Por quanto tempo tenho acesso?</span>
+       <span class="faq-icon text-terracotta text-xl flex-shrink-0">+</span>
+      </button>
+      <div class="faq-answer px-4 pb-4">
+       <p class="text-sm text-chocolate-light">Acesso vitalício! Uma vez que você compra, o material é seu para sempre. Pode consultar quando quiser, quantas vezes precisar.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Final CTA -->
+   <section class="px-5 pb-16 bg-gradient-to-b from-cream to-cream-dark pt-10">
+    <div class="text-center mb-8">
+     <h2 class="font-heading font-black text-xl text-chocolate mb-2">Pronto para começar?</h2>
+     <p class="text-sm text-chocolate-light">Escolha seu plano e receba na hora:</p>
+    </div>
+
+    <div class="space-y-4">
+     <!-- BOTÃO RODAPÉ (4,99) - corrigido -->
+     <a
+      href="https://pay.cakto.com.br/3di22zr_752116"
+      target="_blank"
+      rel="noopener"
+      class="block w-full bg-chocolate hover:bg-chocolate-light text-white font-heading font-bold text-center py-4 rounded-xl transition-colors shadow-md"
+     >
+      Plano Básico — R$ 4,99
+     </a>
+
+     <!-- BOTÃO RODAPÉ (14,99) - corrigido -->
+     <a
+      href="https://pay.cakto.com.br/36dcsbs_776997"
+      target="_blank"
+      rel="noopener"
+      class="block w-full bg-green-cta hover:bg-green-cta-hover text-white font-heading font-bold text-center py-4 rounded-xl transition-colors shadow-lg text-lg"
+     >
+      🌟 Plano Completo — R$ 14,99
+     </a>
+    </div>
+
+    <p class="text-center text-xs text-chocolate-light mt-6">Pagamento 100% seguro • Acesso imediato • Satisfação garantida</p>
+   </section>
+
+   <!-- Footer -->
+   <footer class="bg-chocolate text-white py-8 px-5 text-center">
+    <div class="text-2xl mb-2">🍫</div>
+    <p class="font-heading font-bold">Doce Sem Erro</p>
+    <p class="text-xs text-terracotta-light mt-2">© 2024 • Todos os direitos reservados</p>
+   </footer>
+
+  </div>
+
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      headline: 'Aprenda a fazer brigadeiros perfeitos para vender ou para impressionar em casa',
+      subheadline: 'Receitas testadas + passo a passo direto ao ponto',
+      basic_price: 'R$ 4,99',
+      complete_price: 'R$ 14,99',
+      background_color: '#FDF8F3',
+      text_color: '#5D4037',
+      accent_color: '#C4805A',
+      cta_color: '#2E7D32',
+      secondary_surface_color: '#FFFFFF'
+    };
+
+    // Countdown Timer
+    let timeLeft = 5 * 60;
+
+    function updateCountdown() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      const countdownEl = document.getElementById('countdown');
+      if (countdownEl) {
+        countdownEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      }
+
+      if (timeLeft > 0) {
+        timeLeft--;
+        setTimeout(updateCountdown, 1000);
+      } else {
+        const urgencyBar = document.getElementById('urgency-bar');
+        if (urgencyBar) {
+          urgencyBar.innerHTML = '<p class="text-sm font-semibold font-heading">⚡ Última chance! Garanta agora antes que acabe</p>';
+        }
+      }
+    }
+
+    updateCountdown();
+
+    // FAQ Toggle
+    function toggleFaq(button) {
+      const answer = button.nextElementSibling;
+      const icon = button.querySelector('.faq-icon');
+
+      if (answer.classList.contains('open')) {
+        answer.classList.remove('open');
+        icon.textContent = '+';
+      } else {
+        document.querySelectorAll('.faq-answer.open').forEach(el => {
+          el.classList.remove('open');
+          el.previousElementSibling.querySelector('.faq-icon').textContent = '+';
+        });
+        answer.classList.add('open');
+        icon.textContent = '−';
+      }
+    }
+
+    // Element SDK Integration
+    async function onConfigChange(config) {
+      const headline = document.getElementById('headline');
+      if (headline) headline.textContent = config.headline || defaultConfig.headline;
+
+      const subheadline = document.getElementById('subheadline');
+      if (subheadline) subheadline.textContent = config.subheadline || defaultConfig.subheadline;
+
+      const basicPrice = document.getElementById('basic-price-display');
+      if (basicPrice) basicPrice.textContent = config.basic_price || defaultConfig.basic_price;
+
+      const completePrice = document.getElementById('complete-price-display');
+      if (completePrice) completePrice.textContent = config.complete_price || defaultConfig.complete_price;
+
+      // Apply colors
+      document.body.style.backgroundColor = config.background_color || defaultConfig.background_color;
+
+      document.querySelectorAll('.text-chocolate, h1, h2, h3, h4').forEach(el => {
+        el.style.color = config.text_color || defaultConfig.text_color;
+      });
+
+      document.querySelectorAll('.bg-terracotta, .badge').forEach(el => {
+        el.style.backgroundColor = config.accent_color || defaultConfig.accent_color;
+      });
+
+      document.querySelectorAll('.bg-green-cta').forEach(el => {
+        el.style.backgroundColor = config.cta_color || defaultConfig.cta_color;
+      });
+
+      document.querySelectorAll('.bg-white').forEach(el => {
+        el.style.backgroundColor = config.secondary_surface_color || defaultConfig.secondary_surface_color;
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+          },
+          {
+            get: () => config.secondary_surface_color || defaultConfig.secondary_surface_color,
+            set: (value) => { config.secondary_surface_color = value; window.elementSdk.setConfig({ secondary_surface_color: value }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          },
+          {
+            get: () => config.cta_color || defaultConfig.cta_color,
+            set: (value) => { config.cta_color = value; window.elementSdk.setConfig({ cta_color: value }); }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => { config.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['headline', config.headline || defaultConfig.headline],
+        ['subheadline', config.subheadline || defaultConfig.subheadline],
+        ['basic_price', config.basic_price || defaultConfig.basic_price],
+        ['complete_price', config.complete_price || defaultConfig.complete_price]
+      ]);
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d14b2d8d37cb3c6',t:'MTc3MTY2MDcwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+
+ </body>
+</html>
